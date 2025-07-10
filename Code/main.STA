@@ -1,0 +1,98 @@
+
+ROM used:   4114/32768 (13%)
+            4114/32768 (13%) including unused fragments
+
+            2.7 Average locations per line
+            17.1 Average locations per statement
+
+RAM used:   38/1536 (2%) at main() level
+            79/1536 (5%) worst case
+
+Stack used: 8 worst case (6 in main + 2 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  186   128  53  main.c
+   16     0   0  main.h
+  840     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4520.h
+  463   100  41  lcd.c
+   17    13   5  setup.c
+----- -----
+ 1522   241 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     38   0    1             @delay_ms1
+0     20   0    0             @const653
+0     78   1    3    760  4.5  lcd_read_byte
+0     82   1    2    262  3.7  lcd_read_nibble
+0     72   1    1    399  2.4  lcd_send_nibble
+0     70   1    3    415  3.7  lcd_send_byte
+0    100   1    2    704  5.0  lcd_init
+0     34   0    4    208  6.3  lcd_gotoxy
+0     80   1    1    354  4.7  lcd_putc
+0    102   1    0    338  2.1  setup
+0     98   1    0     74  2.8  giam
+0    618   8   16             @ADDFF
+0    118   1   10             @FLT
+0     98   1    0     75  2.5  tang
+0    338   4    1    699  3.8  MAIN
+0     18   0    0             @const710
+0     32   0    2             @PSTRINGC_672
+0     14   0    0             @const712
+0     16   0    0             @const713
+0     16   0    0             @const714
+0     14   0    0             @const715
+0      2   0    0             @const716
+0     16   0    0             @const717
+0     30   0    3             @PSTRINGCN_672
+0    242   3   11             @MULFF
+0     64   1    5             @FTOSD
+0    142   2   13             @DIV3232
+0    376   5   13             @PRINTF_L32D_672FPFPF
+0     10   0    0             @const731
+0      2   0    0             @const732
+0     54   1    1    165  2.5  hutbui
+0      2   0    0             @const733
+0      8   0    0             @const734
+0      2   0    0             @const735
+0     98   1    1     86  1.9  nhietdo
+0     56   1    2             @ITOF
+0    140   2    4     52  1.9  pwm
+0     58   1    4             @SFTOI
+0     18   0    0     33  0.9  tien
+0     14   0    0             @const740
+0     18   0    0     33  0.9  lui
+0     12   0    0             @const741
+0     18   0    0     33  0.9  trai
+0     10   0    0             @const742
+0     18   0    0     33  0.9  phai
+0     10   0    0             @const743
+0     16   0    0     33  0.9  dung
+0     14   0    0             @const744
+0    206   3    3   1132  3.9  dongco
+0    220   3    2    816  3.9  tudong
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               21
+    Statements              241
+    Comments                262
+    Volume (V)              11468
+    Difficulty (D)          59.0
+    Effort to implement (E) 676664
+    Time to implement (T)   10 hours, 27 minutes
+    Est Delivered Bugs (B)  3
+    Cyclomatic Complexity   19
+    Maintainability (MI)    62
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-000B8   178  0  
+000BA-07FFE  3932  28650  
+
+
+

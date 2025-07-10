@@ -1,0 +1,89 @@
+#include <main.h>
+float x=0.1;
+int16 value;
+#int_EXT
+void  tang(void) 
+{
+  x=x+0.1;
+  if(x>1) x=1;
+}
+
+#int_EXT1
+void  giam(void) 
+{
+  x=x-0.1;
+  if(x<0.1) x=0.1;
+}
+#define LCD_ENABLE_PIN  PIN_C0                                    
+#define LCD_RS_PIN      PIN_C3                                    
+#define LCD_RW_PIN      PIN_C1                                    
+#define LCD_DATA4       PIN_C4                                    
+#define LCD_DATA5       PIN_C5                                    
+#define LCD_DATA6       PIN_C6                                    
+#define LCD_DATA7       PIN_C7  
+#include <lcd.c> 
+void dongco();
+void PWM();
+void main()
+{  
+   enable_interrupts(GLOBAL);
+   enable_interrupts(INT_EXT);
+   enable_interrupts(INT_EXT1);
+   enable_interrupts( INT_EXT_L2H );
+   enable_interrupts( INT_EXT1_L2H );
+   setup_timer_2(T2_DIV_BY_4,74,1);      //100 us overflow, 100 us interrupt
+   setup_ccp1(CCP_PWM|CCP_SHUTDOWN_AC_L|CCP_SHUTDOWN_BD_L);
+   
+   /* duty cycle(x)= value/[4*(PR2+1)] trong do duty la phan tram PWM
+                                                     value la gia tri dua vao 
+                                                     PR2 lay tu timer 2 ben tren */
+   lcd_init();
+   lcd_putc("DO AN TOT NGHIEP"); delay_ms(100);
+   lcd_putc("\fSV THUC HIEN"); delay_ms(100);
+   lcd_putc("\fNGUYEN BA QUAN\n"); delay_ms(100);
+   lcd_putc("\fNGUYEN QUOC VU"); delay_ms(100);
+   lcd_putc("\fDINH DUC KHA"); delay_ms(100);
+   while(TRUE)
+   { 
+     dongco();
+     PWM();
+   }
+
+}
+void dongco()
+{
+   if(input(PIN_A1)==1)            
+    { output_d(0x05);     //0101 tien
+      lcd_putc("tien"); delay_ms(20);
+      lcd_putc("\f"); 
+    }   
+     else if (input(PIN_A2)==1)   
+      { output_d(0x0A);    //1010 lui 
+        lcd_putc("lui");   delay_ms(20); 
+        lcd_putc("\f");
+      }
+     else if(input(PIN_A3)==1)   
+      { output_d(0x04);    //0100 trai
+        lcd_putc("trai");  delay_ms(20);
+        lcd_putc("\f");
+      }
+     else if(input(PIN_A4)==1)  
+      { output_d(0x01);    //0001 phai
+        lcd_putc("phai"); delay_ms(20);
+        lcd_putc("\f");
+      }
+     else 
+      { lcd_putc("\f");
+        output_d(0x00);
+        lcd_putc("dung");delay_ms(20);
+        lcd_putc("\f");
+      }
+}
+void PWM()
+{
+   value=x*4*75;
+   set_pwm1_duty(value);
+}
+
+
+

@@ -1,0 +1,107 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+005     lcd_init.i
+005     @PSTRINGC_92.@SCRATCH1
+005     dongco.@SCRATCH1
+006     lcd_init.@SCRATCH1
+006     @PSTRINGC_92.@SCRATCH2
+007     lcd_putc.c
+008     @delay_ms1.P1
+008     lcd_gotoxy.x
+009     lcd_gotoxy.y
+00A     lcd_gotoxy.address
+00B     lcd_gotoxy.@SCRATCH1
+00C     lcd_send_byte.address
+00D     lcd_send_byte.n
+00E     lcd_read_byte.low
+00E     lcd_send_byte.@SCRATCH1
+00F     lcd_send_nibble.n
+00F     lcd_read_byte.high
+010     lcd_read_nibble.n
+010     lcd_read_byte.@SCRATCH1
+011     lcd_read_nibble.@SCRATCH1
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000090  @delay_ms1
+000004  LCD_INIT_STRING
+00014C  lcd_read_byte
+0000FA  lcd_read_nibble
+0000B8  lcd_send_nibble
+000198  lcd_send_byte
+0001DE  lcd_init
+000242  lcd_gotoxy
+000264  lcd_putc
+0003A2  MAIN
+000018  @const108
+0002B6  @PSTRINGC_92
+00002A  @const110
+000038  @const111
+00004A  @const112
+00005A  @const113
+0002D6  dongco
+000068  @const114
+00006E  @const115
+000070  @const116
+000074  @const117
+000076  @const118
+00007C  @const119
+00007E  @const120
+000084  @const121
+000086  @const122
+000088  @const123
+00008E  @const124
+0003A2  @cinit1
+0003B6  @cinit2
+
+Project Directory:
+    C:\Users\quan\Desktop\test\
+
+Project Files:
+    main.c                                                  [12-Apr-15 10:03  CRC=091700FC]
+    main.h                                                  [12-Apr-15 08:46  CRC=65207C8D]
+    ..\..\..\..\Program Files\PICC\devices\18F4520.h        [01-Dec-12 08:59  CRC=3B037E4A]
+    ..\..\..\..\Program Files\PICC\drivers\lcd.c            [23-Aug-12 23:01  CRC=D28E8746]
+
+Source signature=4E580A5F
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4520
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX32:      main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.PJT
+    Call Tree:   main.tre
+    Statistics:  main.STA

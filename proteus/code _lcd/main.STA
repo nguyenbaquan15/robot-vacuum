@@ -1,0 +1,60 @@
+
+ROM used:   792 (2%)
+            792 (2%) including unused fragments
+
+            1 Average locations per line
+            7 Average locations per statement
+
+RAM used:   4 (0%) at main() level
+            17 (1%) worst case
+
+Stack used: 6/31 worst case (6 in main + 0 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   36    13  12  main.c
+   14     0   0  main.h
+  467     0   0  ..\..\..\..\Program Files (x86)\PICC\devices\18F4520.h
+  456   100  88  ..\..\..\..\Program Files (x86)\PICC\drivers\lcd.c
+----- -----
+  973   113 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   3   1             @delay_ms1
+0     20   1   0             @const73
+0     76   5   3   760  4.5  lcd_read_byte
+0     82   5   2   262  3.7  lcd_read_nibble
+0     66   4   1   399  2.4  lcd_send_nibble
+0     70   4   3   415  3.7  lcd_send_byte
+0    100   6   2   704  5.0  lcd_init
+0     34   2   4   208  6.3  lcd_gotoxy
+0     82   5   1   354  4.7  lcd_putc
+0    106   7   0   238  1.8  MAIN
+0     18   1   0   262  3.7  @const107
+0     32   2   2   399  2.4  @PSTRINGC_92
+0     14   1   0   415  3.7  @const109
+0     18   1   0   354  4.7  @const110
+0     16   1   0   236  3.5  @const111
+0     14   1   0   267  6.8  @const112
+ Inline        0    90  2.5  @cinit1
+
+Program metrics:
+    Functions               15
+    Statements              113
+    Comments                214
+    Volume (V)              9139
+    Difficulty (D)          58.1
+    Effort to implement (E) 531266
+    Time to implement (T)   8 hours, 12 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   15
+    Maintainability (MI)    84
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE   788  31976  
+
+
+

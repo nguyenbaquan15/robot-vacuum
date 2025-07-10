@@ -1,0 +1,163 @@
+CCS PCH C Compiler, Version 4.140, 28366               17-Apr-15 10:32
+
+               Filename:   C:\Users\khadinh\Desktop\code_nhiet do\main.lst
+
+               ROM used:   1192 bytes (4%)
+                           Largest free fragment is 31576
+               RAM used:   11 (1%) at main() level
+                           36 (2%) worst case
+               Stack:     2 locations
+
+*
+0000:  GOTO   03DA
+.................... #include <main.h> 
+.................... #include <18F4520.h> 
+.................... //////// Standard Header file for the PIC18F4520 device //////////////// 
+.................... #device PIC18F4520 
+.................... #list 
+....................  
+.................... #device adc=10 
+....................  
+.................... #FUSES NOWDT                    //No Watch Dog Timer 
+.................... #FUSES WDT128                   //Watch Dog Timer uses 1:128 Postscale 
+.................... #FUSES HS                       //High speed Osc (> 4mhz for PCM/PCH) (>10mhz for PCD) 
+.................... #FUSES NOBROWNOUT               //No brownout reset 
+.................... #FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+.................... #FUSES NOXINST                  //Extended set extension and Indexed Addressing mode disabled (Legacy mode) 
+....................  
+.................... #use delay(clock=12000000) 
+03B0:  CLRF   FEA
+03B2:  MOVLW  0B
+03B4:  MOVWF  FE9
+03B6:  MOVF   FEF,W
+03B8:  BZ    03D6
+03BA:  MOVLW  03
+03BC:  MOVWF  01
+03BE:  CLRF   00
+03C0:  DECFSZ 00,F
+03C2:  BRA    03C0
+03C4:  DECFSZ 01,F
+03C6:  BRA    03BE
+03C8:  MOVLW  E3
+03CA:  MOVWF  00
+03CC:  DECFSZ 00,F
+03CE:  BRA    03CC
+03D0:  NOP   
+03D2:  DECFSZ FEF,F
+03D4:  BRA    03BA
+03D6:  GOTO   04A0 (RETURN)
+....................  
+....................  
+....................  
+.................... #use rs232(UART1,baud=9600,bits=8) 
+.................... int16 value; 
+.................... float t; 
+.................... void main() 
+.................... { 
+03DA:  CLRF   FF8
+03DC:  BCF    FD0.7
+03DE:  CLRF   FEA
+03E0:  CLRF   FE9
+03E2:  BCF    FB8.3
+03E4:  MOVLW  4D
+03E6:  MOVWF  FAF
+03E8:  MOVLW  A6
+03EA:  MOVWF  FAC
+03EC:  MOVLW  90
+03EE:  MOVWF  FAB
+03F0:  NOP   
+03F2:  NOP   
+03F4:  MOVF   FC1,W
+03F6:  ANDLW  C0
+03F8:  IORLW  0F
+03FA:  MOVWF  FC1
+03FC:  MOVLW  07
+03FE:  MOVWF  FB4
+....................    setup_adc_ports(AN0); 
+0400:  MOVF   FC1,W
+0402:  ANDLW  C0
+0404:  IORLW  0E
+0406:  MOVWF  FC1
+....................    setup_adc(ADC_CLOCK_INTERNAL ); 
+0408:  MOVF   FC0,W
+040A:  ANDLW  C0
+040C:  IORLW  07
+040E:  MOVWF  FC0
+0410:  BSF    FC0.7
+0412:  BSF    FC2.0
+....................    set_adc_channel( 0 ); 
+0414:  MOVLW  00
+0416:  MOVWF  01
+0418:  MOVF   FC2,W
+041A:  ANDLW  C3
+041C:  IORWF  01,W
+041E:  MOVWF  FC2
+....................    while(TRUE) 
+....................    { 
+....................       value=read_adc(); 
+0420:  BSF    FC2.1
+0422:  BTFSC  FC2.1
+0424:  BRA    0422
+0426:  MOVFF  FC3,04
+042A:  MOVFF  FC4,05
+....................       t=value*0.48828125; 
+042E:  MOVFF  05,0B
+0432:  MOVFF  04,0A
+0436:  BRA    0014
+0438:  MOVFF  03,1A
+043C:  MOVFF  02,19
+0440:  MOVFF  01,18
+0444:  MOVFF  00,17
+0448:  CLRF   1E
+044A:  CLRF   1D
+044C:  MOVLW  7A
+044E:  MOVWF  1C
+0450:  MOVLW  7D
+0452:  MOVWF  1B
+0454:  RCALL  004C
+0456:  MOVFF  03,09
+045A:  MOVFF  02,08
+045E:  MOVFF  01,07
+0462:  MOVFF  00,06
+....................       printf("nhiet do:%3.1f\r",t); delay_ms(1000); 
+0466:  MOVLW  04
+0468:  MOVWF  FF6
+046A:  MOVLW  00
+046C:  MOVWF  FF7
+046E:  MOVLW  09
+0470:  MOVWF  0A
+0472:  BRA    013E
+0474:  MOVLW  02
+0476:  MOVWF  FE9
+0478:  MOVFF  09,0D
+047C:  MOVFF  08,0C
+0480:  MOVFF  07,0B
+0484:  MOVFF  06,0A
+0488:  MOVLW  01
+048A:  MOVWF  0E
+048C:  BRA    022E
+048E:  MOVLW  0D
+0490:  BTFSS  F9E.4
+0492:  BRA    0490
+0494:  MOVWF  FAD
+0496:  MOVLW  04
+0498:  MOVWF  0A
+049A:  MOVLW  FA
+049C:  MOVWF  0B
+049E:  BRA    03B0
+04A0:  DECFSZ 0A,F
+04A2:  BRA    049A
+....................    } 
+04A4:  BRA    0420
+....................  
+.................... } 
+04A6:  SLEEP 
+
+Configuration Fuses:
+   Word  1: C200   HS FCMEN IESO
+   Word  2: 0E18   PUT NOBROWNOUT BORV21 NOWDT WDT128
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

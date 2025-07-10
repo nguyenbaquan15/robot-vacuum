@@ -1,0 +1,39 @@
+#include <main.h>
+#define LCD_ENABLE_PIN  PIN_C0                                    
+#define LCD_RS_PIN      PIN_C3                                   
+#define LCD_RW_PIN      PIN_C1                                    
+#define LCD_DATA4       PIN_C4                                    
+#define LCD_DATA5       PIN_C5                                    
+#define LCD_DATA6       PIN_C6                                    
+#define LCD_DATA7       PIN_C7  
+#include <lcd.c>   
+void hutbui();
+
+void main()
+{
+   lcd_init();
+   output_low(PIN_B4);
+   output_low(PIN_B5);
+
+   while(TRUE)
+   {
+      hutbui();
+   }
+
+}
+void hutbui()
+{ 
+  
+  if(input(PIN_A5)==1) 
+   {
+     output_high(PIN_B4);
+     output_high(PIN_B5);
+     lcd_putc("hut bui"); delay_ms(10);
+   }
+   else 
+    {
+      output_low(PIN_B4);
+      output_low(PIN_B5);
+      lcd_putc("\f");
+    }
+}

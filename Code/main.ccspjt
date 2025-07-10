@@ -1,0 +1,42 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC18F4520
+CCSVerions=5.025
+Compiler=PCH
+CCSVersion=5.025
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[C:\Users\quan\Desktop\robot_vacuum\robot-vacuum\Code\main]
+Type=4
+[mru-list]
+1=main.c
+
+[ProjectLog]
+Days=1
+D1=10-07-2025
+D1_L=6
+D1_L1=[805]Project Opened.
+D1_L2=[919]Started Editing.
+D1_L3=[1220]Stopped Editing.
+TotalEdit=1
+TotalDebug=0
+D1_E=1
+D1_D=0
+D1_L4=[1576]Project Closed.
+D1_L5=[84351]Project Opened.
+D1_L6=[85442]Project Closed.
+
+[Opened Files]
+1=main.c
+2=..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4520.h
+3=lcd.c
+4=SETUP.C
+5=main.h
+6=
+[main.c]
+Type=4
+[Units]
+Count=1
+1=main (main)

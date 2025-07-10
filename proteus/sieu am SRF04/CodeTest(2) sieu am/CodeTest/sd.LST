@@ -1,0 +1,263 @@
+C51 COMPILER V9.01   SD                                                                    07/03/2014 07:26:03 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SD
+OBJECT MODULE PLACED IN sd.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE sd.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /**
+   2            ******************************************************************************
+   3            * Ten Tep          :   Main.c
+   4            * Tac Gia          : 
+   5            * Cong Ty          :   
+   6            * Website          :   Mualinhkien.Vn
+   7            * Ngay             :
+   8            * Tom Tat          :
+   9            *
+  10            *
+  11            ******************************************************************************
+  12            *                        SRF05 + 89S52 + LCD1602
+  13            *                                                                 
+  14            ******************************************************************************
+  15            */
+  16          #include <AT89X52.H>
+  17          #include <stdio.h>
+  18          #define Line_1 0x80
+  19          #define Line_2 0xC0
+  20          #define Clear_LCD 0x01
+  21          
+  22          /* Dinh nghia cac chan dieu khien LCD */
+  23          #define LCD_RS P2_0
+  24          #define LCD_WR P2_1
+  25          #define LCD_EN P2_2
+  26          /*Dinh Nghia Cac Chan DaTa */
+  27          #define LCD_D4 P2_4
+  28          #define LCD_D5 P2_5
+  29          #define LCD_D6 P2_6
+  30          #define LCD_D7 P2_7
+  31          /*Dinh nghia chan dieu khien SRF05 */
+  32          #define TRIGGER P3_1
+  33          #define ECHO    P3_2
+  34          /* Khai bao bien */
+  35          bit range_ok;
+  36          unsigned int distance;
+  37          float range;
+  38          float temp1;
+  39          char str[20];
+  40          char str2[20];
+  41          unsigned char data_recv[10];
+  42          unsigned char index;
+  43           
+  44          void delay_us(unsigned int time)
+  45          {
+  46   1      unsigned int temp;
+  47   1      for(temp=0;temp<time;temp++);
+  48   1      }
+  49          void delay_ms(unsigned int time)
+  50          {
+  51   1      unsigned int i,j;
+  52   1      for(i=0;i<time;i++)
+  53   1      for(j=0;j<125;j++);
+  54   1      }
+  55          void  StartRange()
+C51 COMPILER V9.01   SD                                                                    07/03/2014 07:26:03 PAGE 2   
+
+  56          {
+  57   1      TRIGGER=1;
+  58   1      delay_ms(12);        // Phai tao 1 xung len co do lon it nhat 10ms
+  59   1      ECHO=1;                      // set chan ECHO la cong vao
+  60   1      delay_us(1);
+  61   1      TRIGGER=0;        // Bat dau phep do.
+  62   1      while(!(ECHO));        // Doi cho den khi chan ECHO duoc keo len cao
+  63   1      //TR0=1;                // Cho phep timer 0 hoat dong
+  64   1      TR0=IT0=EX0=EA=1;// cho phep ngat toan cuc
+  65   1      }
+  66           
+  67          void lcd_enable_pulse(void)
+  68          {
+  69   1      LCD_EN=1;
+  70   1      delay_us(1);
+  71   1      LCD_EN=0;
+  72   1      delay_us(1);
+  73   1      }
+  74          void lcd_send_4bit_data ( unsigned char Data )
+  75          {
+  76   1      LCD_D4= Data&0x01;
+  77   1      LCD_D5=((Data>>1)&1);
+  78   1      LCD_D6=((Data>>2)&1);
+  79   1      LCD_D7=((Data>>3)&1);
+  80   1      }
+  81          #ifdef USE_LCD_READ
+              unsigned char lcd_read_4bit_data(void)
+              {
+                unsigned char n = 0x00;
+                /* Read the data port */
+                n |= LCD_D4;
+                n |= (LCD_D5) << 1;
+                n |= (LCD_D6) << 2;
+                n |= (LCD_D7) << 3;
+                return(n);
+              }
+              unsigned char lcd_read_byte(void)
+              {
+                unsigned char low,high;
+                LCD_D4=LCD_D5=_LCD_D6=_LCD_D7=1;
+                LCD_RS=1;
+                delay_us(1);
+                LCD_EN=1;
+                delay_us(1);
+                high = lcd_read_4bit_data();
+                LCD_EN=0;
+                delay_us(1);
+                LCD_EN=1;
+                delay_us(1);
+                low = lcd_read_4bit_data();
+                LCD_EN=0;
+                return( (high<<4) | low);
+              }
+              char lcd_getc(unsigned char x, unsigned char y)            //lay 1 ky tu tai dia chi x,y
+              {
+                char value;
+                lcd_gotoxy(x,y);
+                // Wait until busy flag is low.
+                while(bit_test(lcd_read_byte(),7));
+                LCD_RS=1;     
+                value = lcd_read_byte();
+                LCD_RS=0;
+C51 COMPILER V9.01   SD                                                                    07/03/2014 07:26:03 PAGE 3   
+
+                return(value);
+              }                           
+              #endif           
+ 121          void lcd_send_command (unsigned char Data )
+ 122          {
+ 123   1      #ifdef  USE_LCD_READ
+                while ( 0x80&lcd_read_byte() ) ;
+              #else
+ 126   1        delay_us(20);
+ 127   1      #endif                   
+ 128   1      lcd_send_4bit_data  ( Data >>4 );      /* send 4 bit high  */
+ 129   1      lcd_enable_pulse () ;
+ 130   1      lcd_send_4bit_data  ( Data  );      /* send 4 bit low  */
+ 131   1      lcd_enable_pulse () ;
+ 132   1      }
+ 133          void lcd_init ( void )
+ 134          {
+ 135   1      lcd_send_4bit_data  ( 0x00 );
+ 136   1      delay_ms(10);                  //Was 200
+ 137   1      LCD_RS=0;            // che do gui lenh
+ 138   1      LCD_WR=0;            // che do ghi
+ 139   1      LCD_EN=0;           
+ 140   1      lcd_send_4bit_data  ( 0x03 );        // ket noi 8 bit
+ 141   1      lcd_enable_pulse () ;
+ 142   1      lcd_enable_pulse () ;
+ 143   1      lcd_enable_pulse () ;
+ 144   1      lcd_send_4bit_data  ( 0x02 );        // ket noi 4 bit
+ 145   1      lcd_enable_pulse () ;
+ 146   1      lcd_send_command( 0x2C );          // giao thuc 4 bit, hien thi 2 hang, ki tu 5x8
+ 147   1      delay_ms(5);
+ 148   1      lcd_send_command( 0x80);
+ 149   1      lcd_send_command( 0x0c);      // cho phep hien thi man hinh
+ 150   1      lcd_send_command( 0x06 );          // tang ID, khong dich khung hinh
+ 151   1      delay_ms(5);
+ 152   1      lcd_send_command( Clear_LCD );      // xoa toan bo khung hinh
+ 153   1      delay_ms(10);
+ 154   1      }
+ 155          void lcd_gotoxy(unsigned char x, unsigned char y)
+ 156          {
+ 157   1        unsigned char address;
+ 158   1        if(!y)
+ 159   1        address = (Line_1+x);
+ 160   1        else
+ 161   1        address = (Line_2+x);
+ 162   1        delay_us(1000);
+ 163   1        lcd_send_command(address);
+ 164   1        delay_us(50);
+ 165   1      }
+ 166          void lcd_clear()
+ 167          {
+ 168   1        lcd_send_command( Clear_LCD );
+ 169   1        delay_us(10);
+ 170   1      }
+ 171          void lcd_putchar ( unsigned int Data )
+ 172          {
+ 173   1      LCD_RS=1;              // che do gui du lieu
+ 174   1      lcd_send_command( Data );
+ 175   1      LCD_RS=0;              // che do gui lenh
+ 176   1      }
+ 177          void lcd_puts(char *s)
+ 178          {
+ 179   1        while (*s)
+C51 COMPILER V9.01   SD                                                                    07/03/2014 07:26:03 PAGE 4   
+
+ 180   1        {
+ 181   2            lcd_putchar(*s);
+ 182   2            s++;
+ 183   2        }
+ 184   1      }
+ 185          void ngatngoai0(void)interrupt 0
+ 186          {
+ 187   1      distance=TH0;
+ 188   1      distance<<=8;
+ 189   1      distance|=TL0;
+ 190   1      range=(float)distance*12;
+ 191   1      temp1=((58*11.0592));
+ 192   1      //temp1= 641;
+ 193   1      range=range/(temp1);
+ 194   1      TR0=IT0=EX0= 0;    // Ngung timer
+ 195   1      TL0=TH0=0;                // Xoa du lieu trong thanh ghi Timer 0 
+ 196   1      range_ok=1;
+ 197   1      }
+ 198          void main()
+ 199          {
+ 200   1      
+ 201   1      lcd_init();
+ 202   1      TMOD=0x01;
+ 203   1      sprintf(str, "MUA LINH KIEN.VN");
+ 204   1      lcd_gotoxy(0,0);
+ 205   1      lcd_puts(str);
+ 206   1      delay_ms(4000);
+ 207   1      lcd_gotoxy(3,1) ;;
+ 208   1      lcd_puts("TEST SRF05") ;
+ 209   1      delay_ms(2000) ;
+ 210   1      lcd_clear() ;
+ 211   1      while(1)
+ 212   1      {
+ 213   2      if(!range_ok)
+ 214   2            {
+ 215   3      StartRange();
+ 216   3      delay_ms(100);
+ 217   3            }
+ 218   2            if(range_ok)
+ 219   2            {
+ 220   3      //sprintf(str, "Khoang Canh La:");
+ 221   3      sprintf(str,"Val_Timer: %u ",distance);
+ 222   3      sprintf(str2,"Range:%.2f Cm",range);
+ 223   3          lcd_gotoxy(0,0);
+ 224   3          lcd_puts(str);
+ 225   3              lcd_puts ("     ") ;
+ 226   3          lcd_gotoxy(0,1);
+ 227   3          lcd_puts(str2);
+ 228   3          delay_ms(200);
+ 229   3          range_ok=0;
+ 230   3          }
+ 231   2      }
+ 232   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    644    ----
+   CONSTANT SIZE    =     63    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     61       3
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.01   SD                                                                    07/03/2014 07:26:03 PAGE 5   
+
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

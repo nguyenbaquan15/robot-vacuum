@@ -1,0 +1,8 @@
+*** Error 18 "main.c" Line 3(10,19): File can not be opened
+    Not in project "C:\Users\quan\Desktop\Do an tot nghiep\code_robot\code_tu dong\setup.c"
+    Not in "C:\Users\quan\Desktop\Do an tot nghiep\code_robot\code_tu dong\setup.c"
+    Not in "C:\Program Files\PICC\devices\setup.c"
+    Not in "C:\Program Files\PICC\drivers\setup.c"
+*** Error 12 "main.c" Line 35(9,10): Undefined identifier  -- setup
+      2 Errors,  0 Warnings.
+Build Failed.

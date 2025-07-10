@@ -1,0 +1,201 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019-01C x
+01D-020 t
+021-022 value
+023-024 adc
+025-026 @ITOF.P1
+025     @PSTRINGCN_94.P2
+025-028 @SFTOI.P3
+025-028 @PRINTF_L32D_94FPFPF.P4
+025     MAIN.@SCRATCH1
+025     @PSTRINGC_94.@SCRATCH1
+025     hutbui.@SCRATCH1
+025     PWM.@SCRATCH1
+025     dongco.@SCRATCH1
+025     tudong.@SCRATCH1
+026     @PSTRINGC_94.@SCRATCH2
+026     @PSTRINGCN_94.@SCRATCH1
+026     PWM.@SCRATCH2
+026     dongco.@SCRATCH2
+027     @PSTRINGCN_94.@SCRATCH2
+027     PWM.@SCRATCH3
+027     dongco.@SCRATCH3
+028     PWM.@SCRATCH4
+029     @PRINTF_L32D_94FPFPF.P1
+02A     @PRINTF_L32D_94FPFPF.@SCRATCH1
+02B     @PRINTF_L32D_94FPFPF.@SCRATCH2
+02C     @PRINTF_L32D_94FPFPF.@SCRATCH3
+02D     @PRINTF_L32D_94FPFPF.@SCRATCH4
+02E     @PRINTF_L32D_94FPFPF.@SCRATCH5
+02F     @PRINTF_L32D_94FPFPF.@SCRATCH6
+030     @PRINTF_L32D_94FPFPF.@SCRATCH7
+031     @PRINTF_L32D_94FPFPF.@SCRATCH8
+032-035 @FTOSD.P1
+032     lcd_putc.c
+032-035 @MULFF.P1
+032-035 @DIV3232.P2
+033     @delay_ms1.P1
+033     lcd_gotoxy.x
+034     lcd_gotoxy.y
+035     lcd_gotoxy.address
+036-039 @MULFF.P1
+036-039 @DIV3232.P2
+036     lcd_gotoxy.@SCRATCH1
+036     @FTOSD.@SCRATCH1
+037     lcd_send_byte.address
+038     lcd_send_byte.n
+039     lcd_read_byte.low
+039     lcd_send_byte.@SCRATCH1
+03A     lcd_send_nibble.n
+03A     lcd_read_byte.high
+03A     @MULFF.@SCRATCH1
+03A     @DIV3232.@SCRATCH1
+03B     lcd_read_byte.@SCRATCH1
+03B     @MULFF.@SCRATCH2
+03B     @DIV3232.@SCRATCH2
+03C     @MULFF.@SCRATCH3
+03C     @DIV3232.@SCRATCH3
+03D     @DIV3232.@SCRATCH4
+03E     @DIV3232.@SCRATCH5
+03F-042 @ADDFF.P1
+03F-042 @FLT.P2
+043-046 @ADDFF.P1
+043-046 @FLT.P2
+047     @ADDFF.@SCRATCH1
+047     @FLT.@SCRATCH1
+048     @ADDFF.@SCRATCH2
+048     @FLT.@SCRATCH2
+049     @ADDFF.@SCRATCH3
+04A     @ADDFF.@SCRATCH4
+04B     @ADDFF.@SCRATCH5
+04C     @ADDFF.@SCRATCH6
+04D     @ADDFF.@SCRATCH7
+04E     @ADDFF.@SCRATCH8
+F83     lcd
+F83     PSP_DATA
+F8C     lcdlat
+F95     lcdtris
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+0005D6  @delay_ms1
+00051E  lcd_read_byte
+000512  lcd_read_nibble
+00055E  lcd_send_nibble
+00057A  lcd_send_byte
+0005B4  lcd_gotoxy
+0005FE  lcd_putc
+00039A  giam
+0000BA  @ADDFF
+000324  @FLT
+0003FC  tang
+000D24  MAIN
+00045E  @const131
+00064E  @PSTRINGC_94
+000470  @const133
+00047E  @const134
+000490  @const135
+0004A0  @const136
+0004AE  @const137
+0004B0  @const138
+0007F2  @PSTRINGCN_94
+0006B6  @MULFF
+000810  @FTOSD
+000850  @DIV3232
+0008DE  @PRINTF_L32D_94FPFPF
+0004C0  @const152
+000CEC  hutbui
+0004CA  @const153
+0004CC  @const154
+0004D4  @const155
+0007A8  nhietdo
+00067E  @ITOF
+000A90  PWM
+000A56  @SFTOI
+000B1C  tien
+0004D6  @const160
+000C3E  lui
+0004E4  @const161
+000B40  trai
+0004F0  @const162
+000B2E  phai
+0004FA  @const163
+00066E  dung
+000504  @const164
+000C52  dongco
+000B52  tudong
+000D24  @cinit1
+000D44  @cinit2
+
+Project Directory:
+    C:\Users\quan\Desktop\Do an tot nghiep\code_robot\code_tu dong\
+
+Project Files:
+    main.c                                                  [04-May-15 01:28  CRC=35307208]
+    main.h                                                  [04-May-15 01:26  CRC=65207C8D]
+    ..\..\..\..\..\..\Program Files\PICC\devices\18F4520.h  [01-Dec-12 08:59  CRC=3B037E4A]
+    ..\..\..\..\..\..\Program Files\PICC\drivers\lcd.c      [23-Aug-12 23:01  CRC=D28E8746]
+
+Source signature=7A717B6B
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4520
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX32:      main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.PJT
+    Call Tree:   main.tre
+    Statistics:  main.STA

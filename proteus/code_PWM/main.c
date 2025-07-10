@@ -1,0 +1,45 @@
+#include <main.h>
+float x=0.1;
+int16 value;
+#int_EXT
+void  tang(void) 
+{
+  x=x+0.1;
+  if(x>1) x=1;
+}
+
+#int_EXT1
+void  giam(void) 
+{
+  x=x-0.1;
+  if(x<0.1) x=0.1;
+}
+
+
+
+
+   
+  
+
+
+void main()
+{  enable_interrupts(GLOBAL);
+   enable_interrupts(INT_EXT);
+   enable_interrupts(INT_EXT1);
+   enable_interrupts( INT_EXT_L2H );
+   enable_interrupts( INT_EXT1_L2H );
+   setup_timer_2(T2_DIV_BY_4,74,1);      //100 us overflow, 100 us interrupt
+   setup_ccp1(CCP_PWM|CCP_SHUTDOWN_AC_L|CCP_SHUTDOWN_BD_L);
+   
+   /* duty cycle(x)= value/[4*(PR2+1)] trong do duty la phan tram PWM
+                                                     value la gia tri dua vao 
+                                                     PR2 lay tu timer 2 ben tren */
+   
+   
+
+   while(TRUE)
+   {  value=x*4*75;
+      set_pwm1_duty(value);
+   }
+
+}

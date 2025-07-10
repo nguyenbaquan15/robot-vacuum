@@ -1,0 +1,112 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019-01C x
+01D-01E value
+01F-022 @SFTOI.P1
+01F     MAIN.@SCRATCH1
+020     MAIN.@SCRATCH2
+021     MAIN.@SCRATCH3
+022     MAIN.@SCRATCH4
+023-026 @MULFF.P1
+027-02A @MULFF.P1
+02B     @MULFF.@SCRATCH1
+02C     @MULFF.@SCRATCH2
+02D     @MULFF.@SCRATCH3
+02E-031 @ADDFF.P1
+02E-031 @FLT.P2
+032-035 @ADDFF.P1
+032-035 @FLT.P2
+036     @ADDFF.@SCRATCH1
+036     @FLT.@SCRATCH1
+037     @ADDFF.@SCRATCH2
+037     @FLT.@SCRATCH2
+038     @ADDFF.@SCRATCH3
+039     @ADDFF.@SCRATCH4
+03A     @ADDFF.@SCRATCH5
+03B     @ADDFF.@SCRATCH6
+03C     @ADDFF.@SCRATCH7
+03D     @ADDFF.@SCRATCH8
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+00039A  tang
+0000BA  @ADDFF
+000324  @FLT
+0003FC  giam
+000596  MAIN
+00046A  @MULFF
+00055C  @SFTOI
+000596  @cinit1
+0005BC  @cinit2
+
+Project Directory:
+    C:\Users\khadinh\Desktop\PWM_robot\
+
+Project Files:
+    main.c                                                  [15-Apr-15 01:05  CRC=9A499102]
+    main.h                                                  [15-Apr-15 00:31  CRC=E19D8DA5]
+    ..\..\..\..\Program Files (x86)\PICC\devices\18F4520.h  [30-Nov-12 18:59  CRC=3B037E4A]
+
+Source signature=F1EE1B3B
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4520
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX32:      main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.PJT
+    Call Tree:   main.tre
+    Statistics:  main.STA

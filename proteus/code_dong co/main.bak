@@ -1,0 +1,55 @@
+#include <main.h>
+#define LCD_ENABLE_PIN  PIN_C0                                    ////
+#define LCD_RS_PIN      PIN_C3                                    ////
+#define LCD_RW_PIN      PIN_C1                                    ////
+#define LCD_DATA4       PIN_C4                                    ////
+#define LCD_DATA5       PIN_C5                                    ////
+#define LCD_DATA6       PIN_C6                                    ////
+#define LCD_DATA7       PIN_C7  
+#include <lcd.c>                  // khai bao sau khi khai bao cac chan
+void dongco();
+void main()
+{
+  
+
+   lcd_init();
+   lcd_putc("do an");
+   delay_ms(100);
+   lcd_putc("\fsv thuc hien");
+   delay_ms(100);
+
+   while(TRUE)
+   {
+      dongco();
+   }
+
+}
+void dongco()
+{
+   if(input(PIN_A1)==1)            
+    { output_d(0x05);     //0101 tien
+      lcd_putc("tien"); delay_ms(20);
+      lcd_putc("\f"); 
+    }   
+     else if (input(PIN_A2)==1)   
+      { output_d(0x0A);    //1010 lui 
+        lcd_putc("lui");   delay_ms(20); 
+        lcd_putc("\f");
+      }
+     else if(input(PIN_A3)==1)   
+      { output_d(0x04);    //0100 trai
+        lcd_putc("trai");  delay_ms(20);
+        lcd_putc("\f");
+      }
+     else if(input(PIN_A4)==1)  
+      { output_d(0x01);    //0001 phai
+        lcd_putc("phai"); delay_ms(20);
+        lcd_putc("\f");
+      }
+     else 
+      { output_d(0x00);
+        lcd_putc("dung");delay_ms(20);
+        lcd_putc("\f");
+      }
+}
+

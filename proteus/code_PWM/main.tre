@@ -1,0 +1,12 @@
+ÀÄmain
+   ÃÄMAIN  0/218  Ram=4
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄ@MULFF  0/242  Ram=11
+   ³  ÃÄ@MULFF  0/242  Ram=11
+   ³  ÀÄ@SFTOI  0/58  Ram=4
+   ÃÄtang  0/98  Ram=0
+   ³  ÃÄ@ADDFF  0/618  Ram=16
+   ³  ÀÄ@FLT  0/118  Ram=10
+   ÀÄgiam  0/110  Ram=0
+      ÃÄ@ADDFF  0/618  Ram=16
+      ÀÄ@FLT  0/118  Ram=10

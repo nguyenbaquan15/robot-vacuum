@@ -1,0 +1,5 @@
+main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"robot2.c" LINE:146
+sprintf DSTACK_USAGE:14 DSTACK_LEVEL:14 FILE:"K:\carva\lib\stdio.lib" LINE:1410
+_print DSTACK_USAGE:20 DSTACK_LEVEL:34 FILE:"K:\carva\lib\stdio.lib" LINE:503
+strlen DSTACK_USAGE:2 DSTACK_LEVEL:36 FILE:"K:\carva\lib\string.lib" LINE:1707
+ext_int0_isr DSTACK_USAGE:8 DSTACK_LEVEL:44 FILE:"robot2.c" LINE:46

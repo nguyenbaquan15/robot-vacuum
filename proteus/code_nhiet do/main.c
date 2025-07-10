@@ -1,0 +1,17 @@
+#include <main.h>
+#use rs232(UART1,baud=9600,bits=8)
+int16 value;
+float t;
+void main()
+{
+   setup_adc_ports(AN0);
+   setup_adc(ADC_CLOCK_INTERNAL );
+   set_adc_channel( 0 );
+   while(TRUE)
+   {
+      value=read_adc();
+      t=value*0.48828125;
+      printf("nhiet do:%3.1f\r",t); delay_ms(1000);
+   }
+
+}

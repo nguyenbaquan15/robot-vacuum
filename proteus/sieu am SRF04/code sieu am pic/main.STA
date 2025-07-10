@@ -1,0 +1,66 @@
+
+ROM used:   1802 (5%)
+            1802 (5%) including unused fragments
+
+            2 Average locations per line
+            14 Average locations per statement
+
+RAM used:   10 (1%) at main() level
+            36 (2%) worst case
+
+Stack used: 6/31 worst case (6 in main + 0 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   49    27  21  main.c
+   14     0   0  main.h
+  467     0   0  ..\..\..\..\..\..\Program Files\PICC\devices\18F4520.h
+  456   100  79  ..\..\..\..\..\..\Program Files\PICC\drivers\lcd.c
+----- -----
+  986   127 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   1   1             @delay_ms1
+0     20   1   0             @const73
+0     76   2   3   760  4.5  lcd_read_byte
+0     82   2   2   262  3.7  lcd_read_nibble
+0     66   2   1   399  2.4  lcd_send_nibble
+0     70   2   3   415  3.7  lcd_send_byte
+0    100   3   2   704  5.0  lcd_init
+0     34   1   4   208  6.3  lcd_gotoxy
+0     80   2   1   354  4.7  lcd_putc
+0    126   3   0   233  2.2  MAIN
+0     16   0   0             @const110
+0     32   1   2             @PSTRINGC_92
+0      2   0   0             @const112
+0     10   0   0             @const113
+0     32   1   3             @PSTRINGCN_92
+0    242   7  11             @MULFF
+0     64   2   5             @FTOSD
+0    142   4  13             @DIV3232
+0    378  10  13             @PRINTF_L32D_92FPFPF
+0      2   0   0             @const127
+0    128   4   0   328  3.6  start
+0     56   2   2             @ITOF
+ Inline        0             @cinit1
+
+Program metrics:
+    Functions               9
+    Statements              127
+    Comments                206
+    Volume (V)              5736
+    Difficulty (D)          34.1
+    Effort to implement (E) 195383
+    Time to implement (T)   3 hours, 1 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   8
+    Maintainability (MI)    140
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE  1798  30966  
+
+
+

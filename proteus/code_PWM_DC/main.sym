@@ -1,0 +1,161 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019-01C x
+01D-01E value
+01F-022 @SFTOI.P1
+01F     lcd_init.i
+01F     @PSTRINGC_102.@SCRATCH1
+01F     dongco.@SCRATCH1
+01F     PWM.@SCRATCH1
+020     lcd_init.@SCRATCH1
+020     @PSTRINGC_102.@SCRATCH2
+020     PWM.@SCRATCH2
+021     lcd_putc.c
+021     PWM.@SCRATCH3
+022     @delay_ms1.P1
+022     lcd_gotoxy.x
+022     PWM.@SCRATCH4
+023-026 @MULFF.P1
+023     lcd_gotoxy.y
+024     lcd_gotoxy.address
+025     lcd_gotoxy.@SCRATCH1
+026     lcd_send_byte.address
+027-02A @MULFF.P1
+027     lcd_send_byte.n
+028     lcd_read_byte.low
+028     lcd_send_byte.@SCRATCH1
+029     lcd_send_nibble.n
+029     lcd_read_byte.high
+02A     lcd_read_nibble.n
+02A     lcd_read_byte.@SCRATCH1
+02B     lcd_read_nibble.@SCRATCH1
+02B     @MULFF.@SCRATCH1
+02C     @MULFF.@SCRATCH2
+02D     @MULFF.@SCRATCH3
+02E-031 @ADDFF.P1
+02E-031 @FLT.P2
+032-035 @FLT.P1
+032-035 @ADDFF.P2
+036     @ADDFF.@SCRATCH1
+036     @FLT.@SCRATCH1
+037     @ADDFF.@SCRATCH2
+037     @FLT.@SCRATCH2
+038     @ADDFF.@SCRATCH3
+039     @ADDFF.@SCRATCH4
+03A     @ADDFF.@SCRATCH5
+03B     @ADDFF.@SCRATCH6
+03C     @ADDFF.@SCRATCH7
+03D     @ADDFF.@SCRATCH8
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+0004F6  @delay_ms1
+0003AE  tang
+0000CE  @ADDFF
+000338  @FLT
+000410  giam
+0000BA  LCD_INIT_STRING
+0005B2  lcd_read_byte
+000560  lcd_read_nibble
+00051E  lcd_send_nibble
+0005FE  lcd_send_byte
+000644  lcd_init
+0006A8  lcd_gotoxy
+0006CA  lcd_putc
+0009C2  MAIN
+00047E  @const119
+00071C  @PSTRINGC_102
+000490  @const121
+00049E  @const122
+0004B0  @const123
+0004C0  @const124
+00073C  dongco
+0004CE  @const125
+0004D4  @const126
+0004D6  @const127
+0004DA  @const128
+0004DC  @const129
+0004E2  @const130
+0004E4  @const131
+0004EA  @const132
+0004EC  @const133
+0004EE  @const134
+0004F4  @const135
+000934  PWM
+000808  @MULFF
+0008FA  @SFTOI
+0009C2  @cinit1
+0009E8  @cinit2
+
+Project Directory:
+    C:\Users\khadinh\Desktop\code_PWM_DC\
+
+Project Files:
+    main.c                                                  [15-Apr-15 18:33  CRC=A0BD7BE3]
+    main.h                                                  [15-Apr-15 17:59  CRC=E19D8DA5]
+    ..\..\..\..\Program Files (x86)\PICC\devices\18F4520.h  [30-Nov-12 18:59  CRC=3B037E4A]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\lcd.c      [23-Aug-12 09:01  CRC=D28E8746]
+
+Source signature=627B965E
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4520
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX32:      main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.PJT
+    Call Tree:   main.tre
+    Statistics:  main.STA

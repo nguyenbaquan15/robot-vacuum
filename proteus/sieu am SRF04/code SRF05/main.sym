@@ -1,0 +1,183 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019-01C num_pulse
+01D-020 range
+021-024 kc.time_us
+021     @PSTRINGCN_92.P1
+021     lcd_init.i
+021-024 @PRINTF_L32D_92FPFPF.P1
+021     @PSTRINGC_92.@SCRATCH1
+022     lcd_init.@SCRATCH1
+022     @PSTRINGC_92.@SCRATCH2
+022     @PSTRINGCN_92.@SCRATCH1
+023     @PSTRINGCN_92.@SCRATCH2
+025-028 kc.distance
+025     @PRINTF_L32D_92FPFPF.P1
+026     @PRINTF_L32D_92FPFPF.@SCRATCH1
+027     @PRINTF_L32D_92FPFPF.@SCRATCH2
+028     @PRINTF_L32D_92FPFPF.@SCRATCH3
+029-02C @FLT.P1
+029-02C @DIVFF.P2
+029     @PRINTF_L32D_92FPFPF.@SCRATCH4
+02A     @PRINTF_L32D_92FPFPF.@SCRATCH5
+02B     @PRINTF_L32D_92FPFPF.@SCRATCH6
+02C     @PRINTF_L32D_92FPFPF.@SCRATCH7
+02D-030 @FLT.P1
+02D-030 @DIVFF.P2
+02D     @PRINTF_L32D_92FPFPF.@SCRATCH8
+02E-031 @FTOSD.P1
+02E-031 @DIV3232.P2
+02E     lcd_putc.c
+02E-031 @MULFF.P1
+02F     @delay_ms1.P1
+02F     lcd_gotoxy.x
+030     lcd_gotoxy.y
+031     lcd_gotoxy.address
+031     @FLT.@SCRATCH1
+031     @DIVFF.@SCRATCH1
+032-035 @MULFF.P1
+032-035 @DIV3232.P2
+032     lcd_gotoxy.@SCRATCH1
+032     @FLT.@SCRATCH2
+032     @FTOSD.@SCRATCH1
+032     @DIVFF.@SCRATCH2
+033     lcd_send_byte.address
+033     @DIVFF.@SCRATCH3
+034     lcd_send_byte.n
+034     @DIVFF.@SCRATCH4
+035     lcd_read_byte.low
+035     lcd_send_byte.@SCRATCH1
+035     @DIVFF.@SCRATCH5
+036     lcd_send_nibble.n
+036     lcd_read_byte.high
+036     @MULFF.@SCRATCH1
+036     @DIV3232.@SCRATCH1
+036     @DIVFF.@SCRATCH6
+037     lcd_read_nibble.n
+037     lcd_read_byte.@SCRATCH1
+037     @MULFF.@SCRATCH2
+037     @DIV3232.@SCRATCH2
+038     lcd_read_nibble.@SCRATCH1
+038     @MULFF.@SCRATCH3
+038     @DIV3232.@SCRATCH3
+039     @DIV3232.@SCRATCH4
+03A     @DIV3232.@SCRATCH5
+03B-03E @ADDFF.P1
+03B-03C @ITOF.P2
+03F-042 @ADDFF.P1
+043     @ADDFF.@SCRATCH1
+044     @ADDFF.@SCRATCH2
+045     @ADDFF.@SCRATCH3
+046     @ADDFF.@SCRATCH4
+047     @ADDFF.@SCRATCH5
+048     @ADDFF.@SCRATCH6
+049     @ADDFF.@SCRATCH7
+04A     @ADDFF.@SCRATCH8
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+00043C  @delay_ms1
+0000BA  LCD_INIT_STRING
+0004F8  lcd_read_byte
+0004A6  lcd_read_nibble
+000464  lcd_send_nibble
+000544  lcd_send_byte
+00058A  lcd_init
+0005EE  lcd_gotoxy
+000610  lcd_putc
+000338  TIMER1_isr
+0000CE  @ADDFF
+0003B2  EXT2_isr
+00037A  @ITOF
+000C9E  MAIN
+000406  @const118
+000660  @PSTRINGC_92
+000416  @const120
+0006AA  @FLT
+000418  @const124
+00041A  @const125
+000428  @const126
+00042A  @const127
+000942  @PSTRINGCN_92
+000962  @MULFF
+000A56  @FTOSD
+000A96  @DIV3232
+000B24  @PRINTF_L32D_92FPFPF
+000680  start
+00087A  kc
+000720  @DIVFF
+000C9E  @cinit1
+000CB4  @cinit2
+
+Project Directory:
+    C:\Users\quan\Desktop\code SRF05\
+
+Project Files:
+    main.c                                                  [16-Apr-15 10:30  CRC=64D2E4A3]
+    main.h                                                  [16-Apr-15 10:06  CRC=E19D8DA5]
+    ..\..\..\..\Program Files\PICC\devices\18F4520.h        [01-Dec-12 08:59  CRC=3B037E4A]
+    ..\..\..\..\Program Files\PICC\drivers\lcd.c            [23-Aug-12 23:01  CRC=D28E8746]
+
+Source signature=2690FF1E
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4520
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX32:      main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.PJT
+    Call Tree:   main.tre
+    Statistics:  main.STA

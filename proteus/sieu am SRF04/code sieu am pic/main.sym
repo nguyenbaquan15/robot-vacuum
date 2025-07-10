@@ -1,0 +1,130 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 t
+006-009 kc
+00A     lcd_init.i
+00A-00D @PRINTF_L32D_92FPFPF.P1
+00A     @PSTRINGCN_92.P2
+00A-00B @ITOF.P3
+00A     @PSTRINGC_92.@SCRATCH1
+00B     lcd_init.@SCRATCH1
+00B     @PSTRINGC_92.@SCRATCH2
+00B     @PSTRINGCN_92.@SCRATCH1
+00C     @PSTRINGCN_92.@SCRATCH2
+00E     @PRINTF_L32D_92FPFPF.P1
+00F     @PRINTF_L32D_92FPFPF.@SCRATCH1
+010     @PRINTF_L32D_92FPFPF.@SCRATCH2
+011     @PRINTF_L32D_92FPFPF.@SCRATCH3
+012     @PRINTF_L32D_92FPFPF.@SCRATCH4
+013     @PRINTF_L32D_92FPFPF.@SCRATCH5
+014     @PRINTF_L32D_92FPFPF.@SCRATCH6
+015     @PRINTF_L32D_92FPFPF.@SCRATCH7
+016     @PRINTF_L32D_92FPFPF.@SCRATCH8
+017-01A @DIV3232.P1
+017-01A @MULFF.P2
+017-01A @FTOSD.P3
+017     lcd_putc.c
+018     lcd_gotoxy.x
+018     @delay_ms1.P1
+019     lcd_gotoxy.y
+01A     lcd_gotoxy.address
+01B-01E @MULFF.P1
+01B-01E @DIV3232.P2
+01B     lcd_gotoxy.@SCRATCH1
+01B     @FTOSD.@SCRATCH1
+01C     lcd_send_byte.address
+01D     lcd_send_byte.n
+01E     lcd_read_byte.low
+01E     lcd_send_byte.@SCRATCH1
+01F     lcd_send_nibble.n
+01F     lcd_read_byte.high
+01F     @MULFF.@SCRATCH1
+01F     @DIV3232.@SCRATCH1
+020     lcd_read_nibble.n
+020     lcd_read_byte.@SCRATCH1
+020     @MULFF.@SCRATCH2
+020     @DIV3232.@SCRATCH2
+021     lcd_read_nibble.@SCRATCH1
+021     @MULFF.@SCRATCH3
+021     @DIV3232.@SCRATCH3
+022     @DIV3232.@SCRATCH4
+023     @DIV3232.@SCRATCH5
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000036  @delay_ms1
+000004  LCD_INIT_STRING
+0000F2  lcd_read_byte
+0000A0  lcd_read_nibble
+00005E  lcd_send_nibble
+00013E  lcd_send_byte
+000184  lcd_init
+0001E8  lcd_gotoxy
+00020A  lcd_putc
+00068C  MAIN
+000018  @const110
+00025A  @PSTRINGC_92
+000028  @const112
+00002A  @const113
+000424  @PSTRINGCN_92
+0002B2  @MULFF
+000444  @FTOSD
+000484  @DIV3232
+000512  @PRINTF_L32D_92FPFPF
+000034  @const127
+0003A4  start
+00027A  @ITOF
+00068C  @cinit1
+0006A8  @cinit2
+
+Project Directory:
+    C:\Users\quan\Desktop\code_robot\sieu am SRF04\code sieu am pic\
+
+Project Files:
+    main.c                                                  [20-Apr-15 23:30  CRC=1AB27692]
+    main.h                                                  [15-Apr-15 21:45  CRC=E19D8DA5]
+    ..\..\..\..\..\..\Program Files\PICC\devices\18F4520.h  [01-Dec-12 08:59  CRC=3B037E4A]
+    ..\..\..\..\..\..\Program Files\PICC\drivers\lcd.c      [23-Aug-12 23:01  CRC=D28E8746]
+
+Source signature=DC70910D
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4520
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX32:      main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.PJT
+    Call Tree:   main.tre
+    Statistics:  main.STA
